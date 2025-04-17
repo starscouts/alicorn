@@ -1,0 +1,251 @@
+#appbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(24 24 24 / 75%);
+    height: 48px;
+    border-radius: 10px 10px 0 0;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgb(255 255 255 / 15%);
+    color: white;
+    z-index: 999999;
+    transition: border-radius 200ms;
+}
+
+body {
+    background-color: black;
+    background-image: url('./wallpaper');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    inset: 0;
+    margin: 0;
+    background-attachment: fixed;
+}
+
+*::selection {
+    background: transparent;
+}
+
+#menubtn-icon {
+    pointer-events: none;
+}
+
+#menubtn {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    padding: 7px;
+    margin: 5px;
+    border-radius: 999px;
+    background-color: transparent;
+    transition: background-color 200ms;
+}
+
+#menubtn:hover, .statusbar-item:hover, .statusbar-app:hover {
+    background-color: rgba(70, 70, 70, 0.75);
+}
+
+#menubtn:active, #menubtn.menubtn-active, .statusbar-item:active, .statusbar-item.statusbar-item-active, .statusbar-app:active {
+    background-color: rgba(70, 70, 70, 1);
+}
+
+#statusbar {
+    float: right;
+    margin: 7px;
+    height: 33px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    padding-right: 7px;
+}
+
+#statusbar-apps {
+    position: fixed;
+    vertical-align: middle;
+    bottom: 5px;
+}
+
+.statusbar-app {
+    padding: 7px;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 999px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, .5);
+    transition: border-color 200ms, background-color 200ms;
+    background-color: transparent;
+    margin-right: 5px;
+}
+
+.statusbar-app.pinned {
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.statusbar-app.focused {
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.statusbar-app.minimized {
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.statusbar-app-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+#statusbar * {
+    vertical-align: middle;
+    cursor: default;
+}
+
+#appbar-tooltip {
+    z-index: 99999999;
+    position: fixed;
+    color: white;
+    bottom: 52px;
+    background: rgba(24, 24, 24, .75);
+    padding: 5px 10px;
+    backdrop-filter: blur(10px);
+    border-radius: 5px;
+    left: 3px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 200ms;
+    width: max-content;
+    height: max-content;
+}
+
+#appbar-tooltip.hidden {
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.statusbar-item {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 999px;
+    background-color: transparent;
+    transition: background-color 200ms;
+    cursor: default;
+}
+
+#statusbar-time {
+    margin-left: 5px;
+    cursor: default;
+}
+
+.top {
+    z-index: 99999999;
+    opacity: 1;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, .75);
+    position: fixed;
+    inset: 0;
+    transition: opacity 200ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.top-inner {
+    color: white;
+    height: max-content;
+    width: 50vw;
+    padding: 20px;
+    background: #333;
+    border-radius: 10px;
+}
+
+.top-header {
+    text-align: center;
+    margin: -20px;
+    padding: 20px;
+    background: #444;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.top-header-icon {
+    width: 48px;
+    vertical-align: middle;
+}
+
+.top-header-title {
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.top-content {
+    margin-top: 40px;
+}
+
+.top-footer {
+    margin-top: 5px;
+    font-size: 12px;
+    opacity: .25;
+}
+
+.top-options {
+    margin: 20px -20px;
+}
+
+.top-option {
+    padding: 10px 20px;
+    border-top: 1px solid #222;
+    cursor: default;
+}
+
+.top-option:nth-last-child(1) {
+    border-bottom: 1px solid #222;
+}
+
+.top-option-icon {
+    height: 24px;
+    vertical-align: middle;
+    width: 24px;
+}
+
+.top-option-name {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.top-option-key {
+    vertical-align: middle;
+    float: right;
+    font-size: 11px;
+    border: 1px solid white;
+    border-radius: 2px;
+    padding: 2px 5px;
+    margin-top: 2px;
+    opacity: .5;
+    border-bottom-width: 2px;
+}
+
+.top-option:hover {
+    background: rgba(0, 0, 0, .25);
+}
+
+.top-option:active {
+    background: rgba(0, 0, 0, .5);
+}
+
+.window:not(.loading) .window-loader {
+    display: none;
+}

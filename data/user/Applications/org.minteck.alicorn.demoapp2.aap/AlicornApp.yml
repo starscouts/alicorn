@@ -1,0 +1,33 @@
+# The common display name of this app.
+# It may be used as the directory name.
+name: Demo App 2
+
+# A generic name for the app.
+# Shown in the application menu and used by the system-wide search engine.
+generic_name: Testing Program
+
+# The type of package.
+# Can be: app, command, service; check the documentation for details.
+type: app
+
+# The name of the app developer. Commonly shown in app stores
+author: Minteck
+
+# A website that can provide support and optionally bug reports.
+website: https://minteck.org
+
+# A description for the app. Commonly shown in app stores
+description: Just another demo application for the Alicorn Operating System
+
+# A unique package name for the app.
+# NOTE: This should only contain alphanumerical characters and periods,
+# or it may break the window manager and other core system functionality.
+package: org.minteck.alicorn.demoapp2
+
+# The app version, can be any type of data.
+# Used by app stores to check against new updates
+version: 1.0
+
+# Size of the base app window. Can be adjusted from an API call.
+width: 256
+height: 256

@@ -1,0 +1,14 @@
+{
+  "version": "r1alpha1",
+  "release": "0.1.1",
+  "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "electron": "^17.1.2",
+    "jquery": "^3.6.0",
+    "loudness": "github:LinusU/node-loudness",
+    "node-wifi": "^2.0.16",
+    "systeminformation": "^5.11.9",
+    "uuidv4": "^6.2.12",
+    "yaml": "^1.10.2"
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AlicornDesktop</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="windowmanager.css">
+    <script>
+        global.$ = global.jQuery = require('jquery');
+        global.fs = require('fs');
+        global.YAML = require('yaml');
+        global.si = require('systeminformation');
+        global.wifi = require('node-wifi');
+        global.loudness = require('loudness')
+        global.uuid = require('uuid')
+
+        wifi.init({
+            iface: null
+        });
+    </script>
+</head>
+<body>
+    <div id="debug" style="position:fixed;font-size:12px;z-index:-1;color:white;margin:5px;"><button onclick="WindowManager.openApp('org.minteck.alicorn.demoapp')">win1</button><br><button onclick="WindowManager.openApp('org.minteck.alicorn.demoapp2')">win2</button><br><button onclick="window.close();">abort</button><br><button onclick="DebugMenu.show();">debug</button><br><br>Alicorn <script>require("fs").writeFileSync("refresh", (require("fs").readFileSync("refresh") - 1 + 2).toString());document.write(require('./package.json').version + " (version " + require('./package.json').release + ", build " + require('fs').readFileSync('refresh') + "." + require('fs').readFileSync('build') + ")")</script><br><br><div id="debug-info"></div></div>
+    <div id="appbar">
+        <span id="menubtn">
+            <img id="menubtn-icon" src="./menu.svg">
+        </span>
+        <span id="statusbar-apps"></span>
+        <span id="statusbar">
+            <div>
+                <span id="statusbar-network" class="statusbar-item">
+                    <img id="statusbar-network-icon" src="./icons/network-wired.svg">
+                </span><span id="statusbar-sound" class="statusbar-item">
+                    <img id="statusbar-sound-icon" src="./icons/volume-0.svg">
+                </span><span id="statusbar-battery" class="statusbar-item">
+                    <img id="statusbar-battery-icon" src="./icons/battery-unknown.svg">
+                </span>
+                <span id="statusbar-time">00:00</span>
+            </div>
+        </span>
+    </div>
+    <div id="appbar-tooltip" class="hidden">Hello!</div>
+
+    <div id="tracked-windows"></div>
+    <div class="top hidden" id="debugging-options">
+        <div class="top-inner">
+            <div class="top-header">
+                <img class="top-header-icon" src="icons/debug.svg">
+                <span class="top-header-title">Debugging Options</span>
+            </div>
+            <div class="top-content">
+                If the system or a specific app had become unresponsive, you can close it within this menu. Press Ctrl+Alt+Del to access this menu at any time.
+            </div>
+            <div class="top-options">
+                <div class="top-option" id="debugging-option-forcequit" onclick="window.close();DebugMenu.hide();">
+                    <img src="icons/debug-stop.svg" class="top-option-icon" alt="">
+                    <span class="top-option-name">Force quit UI</span>
+                    <span class="top-option-key">Q</span>
+                </div>
+                <div class="top-option" id="debugging-option-reload" onclick="location.reload();">
+                    <img src="icons/debug-reload.svg" class="top-option-icon" alt="">
+                    <span class="top-option-name">Reload UI</span>
+                    <span class="top-option-key">R</span>
+                </div>
+                <div class="top-option" id="debugging-option-debug" onclick="require('@electron/remote').getCurrentWindow().toggleDevTools();DebugMenu.hide();">
+                    <img src="icons/debug-debugger.svg" class="top-option-icon" alt="">
+                    <span class="top-option-name">Open debugging utility</span>
+                    <span class="top-option-key">D</span>
+                </div>
+                <div class="top-option" id="debugging-option-closeall" onclick="WindowManager.closeAll();DebugMenu.hide();">
+                    <img src="icons/debug-closeall.svg" class="top-option-icon" alt="">
+                    <span class="top-option-name">Close all windows</span>
+                    <span class="top-option-key">C</span>
+                </div>
+                <div class="top-option" id="debugging-option-close" onclick="DebugMenu.hide();">
+                    <img src="icons/window-close.svg" class="top-option-icon" alt="">
+                    <span class="top-option-name">Close this menu</span>
+                    <span class="top-option-key">Esc</span>
+                </div>
+            </div>
+            <div class="top-footer">
+                <script>document.write(require('./package.json').version + ", v" + require('./package.json').release + ", " + require('fs').readFileSync('refresh') + "." + require('fs').readFileSync('build'))</script>
+            </div>
+        </div>
+    </div>
+
+    <script src="./debugmenu.js"></script>
+    <script src="./sdk/host.js"></script>
+    <script src="./status-time.js"></script>
+    <script src="./status-battery.js"></script>
+    <script src="./status-network.js"></script>
+    <script src="./status-sound.js"></script>
+    <script src="windowmanager.js"></script>
+    <script src="./debug.js"></script>
+    <script src="./shortcuts.js"></script>
+    <script src="./status-apps.js"></script>
+    <script src="./status-tooltip.js"></script>
+</body>
+</html>
